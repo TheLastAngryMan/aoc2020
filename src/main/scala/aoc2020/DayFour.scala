@@ -1,6 +1,5 @@
 package aoc2020
 
-import aoc2020.DayThree.{Coord, traverseMap}
 import cats.syntax.option._
 
 import scala.annotation.tailrec
