@@ -21,9 +21,9 @@ object DayFour {
     def heightRegex: Regex = "^([0-9]*)(cm|in)$".r
     def validate: Boolean = {
       heightRegex.findAllIn(value).matchData.toList.headOption.map(matches => matches.group(1).toInt -> matches.group(2)).exists {
-        case (height, "cm") if height >= 150 && height <= 193 => true
-        case (height, "in") if height >= 59 && height <= 76   => true
-        case _                                                => false
+        case (height, "cm") => height >= 150 && height <= 193
+        case (height, "in") => height >= 59 && height <= 76
+        case _              => false
       }
     }
   }
