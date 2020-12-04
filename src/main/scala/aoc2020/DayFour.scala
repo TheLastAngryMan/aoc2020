@@ -12,21 +12,20 @@ object DayFour {
   }
   class YearField(value: String, lower: Int, upper: Int) extends PassportField {
     val fourDigits: Regex = "^[0-9]{4}$".r
-    def validate: Boolean = {
-      fourDigits.matches(value) && value.toInt >= lower && value.toInt <= upper
-    }
+    def validate: Boolean = fourDigits.matches(value) && value.toInt >= lower && value.toInt <= upper
   }
   case class BirthYear(birthYear: String) extends YearField(birthYear, 1920, 2002)
   case class IssueYear(issueYear: String) extends YearField(issueYear, 2010, 2020)
   case class ExpirationYear(expirationYear: String) extends YearField(expirationYear, 2020, 2030)
   case class Height(value: String) extends PassportField {
     def heightRegex: Regex = "^([0-9]*)(cm|in)$".r
-    def validate: Boolean =
+    def validate: Boolean = {
       heightRegex.findAllIn(value).matchData.toList.headOption.map(matches => matches.group(1).toInt -> matches.group(2)).exists {
         case (height, "cm") if height >= 150 && height <= 193 => true
         case (height, "in") if height >= 59 && height <= 76   => true
         case _                                                => false
       }
+    }
   }
   class RegexField(value: String, regex: Regex) extends PassportField {
     override def validate: Boolean = regex.matches(value)
