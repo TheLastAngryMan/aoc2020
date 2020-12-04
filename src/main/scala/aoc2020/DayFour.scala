@@ -8,7 +8,6 @@ import scala.io.Source
 import scala.util.matching.Regex
 
 object DayFour {
-  val fourDigits: Regex = "^[0-9]{4}$".r
   sealed trait PassportField {
     def validate: Boolean
   }
