@@ -93,10 +93,9 @@ object DayFour {
   def validatePassportBatch(batch: List[String], f: Passport => Boolean): Int = processPassportBatch(batch).count(f)
 
   def main(args: Array[String]): Unit = {
-    val dayFourFile = Source.fromFile("inputs/dayFour.txt")
-    val dayFourInput = dayFourFile.getLines.toList
-    println(s"Number of basic valid passports is ${validatePassportBatch(dayFourInput, _.validateFieldsPresent)}")
-    println(s"Number of checked valid passports is ${validatePassportBatch(dayFourInput, _.validateFields)}")
-    dayFourFile.close()
+    Util.processInput("dayFour") { lines =>
+      println(s"Number of basic valid passports is ${validatePassportBatch(lines, _.validateFieldsPresent)}")
+      println(s"Number of checked valid passports is ${validatePassportBatch(lines, _.validateFields)}")
+    }
   }
 }

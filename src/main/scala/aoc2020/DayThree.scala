@@ -26,10 +26,10 @@ object DayThree {
       Coord(7, 1),
       Coord(1, 2)
     )
-    val dayThreeFile = Source.fromFile("inputs/dayThree.txt")
-    val dayThreeInput = dayThreeFile.getLines.toList.map(_.toList)
-    println(s"No of trees hit: ${traverseMap(dayThreeInput, Coord(3, 1))}")
-    println(s"Total number of trees hit part 2: ${secondPartCoords.map(traverseMap(dayThreeInput, _)).map(BigInt(_)).product}")
-    dayThreeFile.close()
+    Util.processInput("dayThree") { lines =>
+      val dayThreeInput = lines.map(_.toList)
+      println(s"No of trees hit: ${traverseMap(dayThreeInput, Coord(3, 1))}")
+      println(s"Total number of trees hit part 2: ${secondPartCoords.map(traverseMap(dayThreeInput, _)).map(BigInt(_)).product}")
+    }
   }
 }

@@ -40,10 +40,9 @@ object DayTwo {
   def validatePasswords(input: Seq[String], f: PasswordLine => Boolean): Int = input.flatMap(parsePasswordLine).count(f)
 
   def main(args: Array[String]): Unit = {
-    val dayTwoFile = Source.fromFile("inputs/dayTwo.txt")
-    val dayTwoInput = dayTwoFile.getLines.toList
-    println(s"Valid passwords part one: ${validatePasswords(dayTwoInput, _.validatePartOne)}")
-    println(s"Valid passwords part two: ${validatePasswords(dayTwoInput, _.validatePartTwo)}")
-    dayTwoFile.close()
+    Util.processInput("dayTwo") { lines =>
+      println(s"Valid passwords part one: ${validatePasswords(lines, _.validatePartOne)}")
+      println(s"Valid passwords part two: ${validatePasswords(lines, _.validatePartTwo)}")
+    }
   }
 }
