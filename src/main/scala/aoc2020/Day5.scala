@@ -2,7 +2,7 @@ package aoc2020
 
 import scala.annotation.tailrec
 
-object DayFive extends App {
+object Day5 extends App {
   @tailrec
   def processBinarySpace(lines: List[Char], lowerBound: Int, upperBound: Int, lowerHalfCharacter:Char, upperHalfCharacter: Char): Int = {
     lines match {
@@ -18,7 +18,7 @@ object DayFive extends App {
   def processSeat(lines: List[Char]): Int = processBinarySpace(lines, 0,7, 'L', 'R')
   def processBoardingPass(lines: List[Char]): Int = processRow(lines.slice(0, 7)) * 8 + processSeat(lines.slice(7, 10))
 
-  Util.processInput("dayFive") { lines =>
+  Util.processInput("day5") { lines =>
     //Part One
     val boardingPassIds = lines.map(bp => processBoardingPass(bp.toList))
     println(s"Max id is ${boardingPassIds.max}")

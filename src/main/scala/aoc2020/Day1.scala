@@ -1,6 +1,6 @@
 package aoc2020
 
-object DayOne extends App {
+object Day1 extends App {
   def sum2020(numbers: List[Int], combinations: Int): Option[Int] = {
     numbers
       .combinations(combinations)
@@ -11,7 +11,7 @@ object DayOne extends App {
       .headOption
   }
 
-  Util.processInput("dayOne") { lines =>
+  Util.processInput("day1") { lines =>
     sum2020(lines.map(_.toInt), 2).foreach(println)
     sum2020(lines.map(_.toInt), 3).foreach(println)
   }

@@ -3,7 +3,7 @@ package aoc2020
 import scala.annotation.tailrec
 import scala.io.Source
 
-object DayThree {
+object Day3 {
   case class Coord(x: Int, y: Int)
 
   def traverseMap(map: List[List[Char]], increment: Coord): Int = {
@@ -26,7 +26,7 @@ object DayThree {
       Coord(7, 1),
       Coord(1, 2)
     )
-    Util.processInput("dayThree") { lines =>
+    Util.processInput("day3") { lines =>
       val dayThreeInput = lines.map(_.toList)
       println(s"No of trees hit: ${traverseMap(dayThreeInput, Coord(3, 1))}")
       println(s"Total number of trees hit part 2: ${secondPartCoords.map(traverseMap(dayThreeInput, _)).map(BigInt(_)).product}")

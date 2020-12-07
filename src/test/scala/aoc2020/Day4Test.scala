@@ -3,7 +3,7 @@ package aoc2020
 import org.scalatest.funspec.AnyFunSpecLike
 import org.scalatest.matchers.should
 
-class DayFourTest extends AnyFunSpecLike with should.Matchers {
+class Day4Test extends AnyFunSpecLike with should.Matchers {
   describe("DayFour:validatePassportBatch") {
     val sampleBatch = List(
       "ecl:gry pid:860033327 eyr:2020 hcl:#fffffd",
@@ -21,7 +21,7 @@ class DayFourTest extends AnyFunSpecLike with should.Matchers {
       "iyr:2011 ecl:brn hgt:59in"
     )
     it("should work for part one sample input") {
-      DayFour.validatePassportBatch(sampleBatch, _.validateFieldsPresent) shouldBe 2
+      Day4.validatePassportBatch(sampleBatch, _.validateFieldsPresent) shouldBe 2
     }
     it("should work for part two sample input") {
       val invalidSample = List(
@@ -53,7 +53,7 @@ class DayFourTest extends AnyFunSpecLike with should.Matchers {
         "",
         "iyr:2010 hgt:158cm hcl:#b6652a ecl:blu byr:1944 eyr:2021 pid:093154719"
       )
-      DayFour.validatePassportBatch(invalidSample ++ validSample, _.validateFields) shouldBe 4
+      Day4.validatePassportBatch(invalidSample ++ validSample, _.validateFields) shouldBe 4
     }
   }
 }

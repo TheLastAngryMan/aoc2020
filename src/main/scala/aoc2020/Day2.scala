@@ -3,7 +3,7 @@ package aoc2020
 import scala.io.Source
 import scala.util.matching.Regex
 
-object DayTwo {
+object Day2 {
   private val LOWER = "lower"
   private val UPPER = "upper"
   private val CHARACTER = "character"
@@ -40,7 +40,7 @@ object DayTwo {
   def validatePasswords(input: Seq[String], f: PasswordLine => Boolean): Int = input.flatMap(parsePasswordLine).count(f)
 
   def main(args: Array[String]): Unit = {
-    Util.processInput("dayTwo") { lines =>
+    Util.processInput("day2") { lines =>
       println(s"Valid passwords part one: ${validatePasswords(lines, _.validatePartOne)}")
       println(s"Valid passwords part two: ${validatePasswords(lines, _.validatePartTwo)}")
     }

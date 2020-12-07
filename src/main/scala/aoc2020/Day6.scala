@@ -2,7 +2,7 @@ package aoc2020
 
 import scala.annotation.tailrec
 
-object DaySix extends App {
+object Day6 extends App {
   @tailrec
   def processDeclarations(lines: List[String], currentSet: Seq[Set[Char]] = Seq.empty, processedGroups: Seq[Seq[Set[Char]]] = Seq.empty): Seq[Seq[Set[Char]]] = {
     lines match {
@@ -20,7 +20,7 @@ object DaySix extends App {
     processDeclarations(lines).map(answers => answers.foldLeft(answers.headOption.getOrElse(Set.empty))((a, b) => a.intersect(b)).size).sum
   }
 
-  Util.processInput("daySix") {lines =>
+  Util.processInput("day6") {lines =>
     println(s"Total number of answered questions: ${sumOfAnsweredQuestions(lines)}")
     println(s"Total number of all answered questions: ${sumOfAllAnsweredQuestions(lines)}")
   }

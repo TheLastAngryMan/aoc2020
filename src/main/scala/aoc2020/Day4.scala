@@ -6,7 +6,7 @@ import scala.annotation.tailrec
 import scala.io.Source
 import scala.util.matching.Regex
 
-object DayFour {
+object Day4 {
   sealed trait PassportField {
     def validate: Boolean
   }
@@ -93,7 +93,7 @@ object DayFour {
   def validatePassportBatch(batch: List[String], f: Passport => Boolean): Int = processPassportBatch(batch).count(f)
 
   def main(args: Array[String]): Unit = {
-    Util.processInput("dayFour") { lines =>
+    Util.processInput("day4") { lines =>
       println(s"Number of basic valid passports is ${validatePassportBatch(lines, _.validateFieldsPresent)}")
       println(s"Number of checked valid passports is ${validatePassportBatch(lines, _.validateFields)}")
     }

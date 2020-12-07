@@ -3,7 +3,7 @@ package aoc2020
 import org.scalatest.funspec.AnyFunSpec
 import org.scalatest.matchers.should
 
-class DaySixTest extends AnyFunSpec with should.Matchers {
+class Day6Test extends AnyFunSpec with should.Matchers {
   val sampleInput = List(
     "abc",
     "",
@@ -24,12 +24,12 @@ class DaySixTest extends AnyFunSpec with should.Matchers {
   )
   describe("DaySix:sumOfAnsweredQuestions") {
     it("should work with sample input") {
-      DaySix.sumOfAnsweredQuestions(sampleInput) shouldBe 11
+      Day6.sumOfAnsweredQuestions(sampleInput) shouldBe 11
     }
   }
   describe("DaySix:sumOfAllAnsweredQuestions") {
     it ("should work with sample input") {
-      DaySix.sumOfAllAnsweredQuestions(sampleInput) shouldBe 6
+      Day6.sumOfAllAnsweredQuestions(sampleInput) shouldBe 6
     }
   }
 }
