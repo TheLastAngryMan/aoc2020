@@ -16,9 +16,7 @@ object DayFive extends App {
   }
   def processRow(lines: List[Char]): Int = processBinarySpace(lines, 0, 127, 'F', 'B')
   def processSeat(lines: List[Char]): Int = processBinarySpace(lines, 0,7, 'L', 'R')
-  def processBoardingPass(lines: List[Char]): Int = {
-    processRow(lines.slice(0, 7)) * 8 + processSeat(lines.slice(7, 10))
-  }
+  def processBoardingPass(lines: List[Char]): Int = processRow(lines.slice(0, 7)) * 8 + processSeat(lines.slice(7, 10))
 
   Util.processInput("dayFive") { lines =>
     //Part One
