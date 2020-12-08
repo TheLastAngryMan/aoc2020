@@ -28,7 +28,7 @@ class Day6Test extends AnyFunSpec with should.Matchers {
     }
   }
   describe("DaySix:sumOfAllAnsweredQuestions") {
-    it ("should work with sample input") {
+    it("should work with sample input") {
       Day6.sumOfAllAnsweredQuestions(sampleInput) shouldBe 6
     }
   }

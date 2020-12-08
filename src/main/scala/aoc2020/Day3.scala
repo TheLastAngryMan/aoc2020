@@ -2,7 +2,7 @@ package aoc2020
 
 import scala.annotation.tailrec
 
-object Day3 extends Day(3){
+object Day3 extends Day(3) {
   case class Coord(x: Int, y: Int)
 
   def traverseMap(map: List[List[Char]], increment: Coord): Int = {

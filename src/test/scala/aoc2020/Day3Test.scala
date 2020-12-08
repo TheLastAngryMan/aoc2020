@@ -24,11 +24,11 @@ class Day3Test extends AnyFunSpec with should.Matchers {
     }
     it("should work with the second sample input") {
       List(
-        Coord(1,1),
-        Coord(3,1),
-        Coord(5,1),
-        Coord(7,1),
-        Coord(1,2)
+        Coord(1, 1),
+        Coord(3, 1),
+        Coord(5, 1),
+        Coord(7, 1),
+        Coord(1, 2)
       ).map(Day3.traverseMap(input, _)).product shouldBe 336
     }
   }

@@ -22,7 +22,7 @@ object Day4 extends Day(4) {
       value match {
         case heightRegex(height, unitValue) if unitValue == "cm" => height.toInt >= 150 && height.toInt <= 193
         case heightRegex(height, unitValue) if unitValue == "in" => height.toInt >= 59 && height.toInt <= 76
-        case _ => false
+        case _                                                   => false
       }
     }
   }
