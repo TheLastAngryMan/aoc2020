@@ -8,7 +8,7 @@ object Day2 {
   private val UPPER = "upper"
   private val CHARACTER = "character"
   private val PASSWORD = "password"
-  val passwordRegex = new Regex("^([0-9]*)-([0-9]*) ([a-z]): (.*)$", LOWER, UPPER, CHARACTER, PASSWORD)
+  val passwordRegex: Regex = "^([0-9]*)-([0-9]*) ([a-z]): (.*)$".r(LOWER, UPPER, CHARACTER, PASSWORD)
 
   case class PasswordLine(lowerLimit: Int, upperLimit: Int, character: Char, password: String) {
     def validatePartOne: Boolean = {
