@@ -58,11 +58,11 @@ object Day8 extends Day(8) {
     //BruteForce Replacement but use lazy evaluation so that we break on the first instance
     input
       .to(LazyList)
-      .zipWithIndex
       .filter {
-        case (Nop(_), _) | (Jump(_), _) => true
+        case Nop(_) | Jump(_) => true
         case _                          => false
       }
+      .zipWithIndex
       .map {
         case (Nop(amount), index)  => followInstructions()(input.updated(index, Jump(amount)))
         case (Jump(amount), index) => followInstructions()(input.updated(index, Nop(amount)))
