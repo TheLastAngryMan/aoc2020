@@ -24,10 +24,10 @@ object Day8 extends App {
     }
   }
   case class ProgramState(
-      pointer: Int = 0,
-      accumulator: Int = 0,
-      executedInstructions: Set[Int] = Set.empty,
-      loopDetected: Boolean = false
+                           pointer: Int = 0,
+                           accumulator: Int = 0,
+                           executedInstructions: Set[Int] = Set.empty,
+                           programTerminated: Boolean = false
   ) {
     def copyAndIncrement(pointer: Int = this.pointer, accumulator: Int = this.accumulator): ProgramState = {
       this.copy(pointer = pointer, accumulator = accumulator, executedInstructions = this.executedInstructions + this.pointer)
@@ -47,9 +47,9 @@ object Day8 extends App {
           )
         case None =>
           println("Program has reached termination")
-          state.copy(loopDetected = false)
+          state.copy(programTerminated = true)
       }
-    } else state.copy(loopDetected = true)
+    } else state
   }
 
   def parseAndExecute(input: List[String]): ProgramState = followInstructions(input.flatMap(parseInstruction))
@@ -68,7 +68,7 @@ object Day8 extends App {
         case (Jump(amount), index) => followInstructions(input.updated(index, Nop(amount)))
       }
       .collectFirst {
-        case state @ ProgramState(_, _, _, loopDetected) if !loopDetected => state
+        case state @ ProgramState(_, _, _, programTerminated) if programTerminated => state
       }
   }
 
