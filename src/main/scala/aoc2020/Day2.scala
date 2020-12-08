@@ -1,6 +1,5 @@
 package aoc2020
 
-import scala.io.Source
 import scala.util.matching.Regex
 
 object Day2 {

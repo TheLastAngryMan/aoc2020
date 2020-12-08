@@ -66,6 +66,7 @@ object Day8 extends App {
       .map {
         case (Nop(amount), index)  => followInstructions(input.updated(index, Jump(amount)))
         case (Jump(amount), index) => followInstructions(input.updated(index, Nop(amount)))
+        case _ => ProgramState()
       }
       .collectFirst {
         case state @ ProgramState(_, _, _, programTerminated) if programTerminated => state
