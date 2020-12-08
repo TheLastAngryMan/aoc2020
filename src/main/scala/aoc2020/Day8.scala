@@ -24,10 +24,10 @@ object Day8 extends App {
     }
   }
   case class ProgramState(
-                           pointer: Int = 0,
-                           accumulator: Int = 0,
-                           executedInstructions: Set[Int] = Set.empty,
-                           programTerminated: Boolean = false
+      pointer: Int = 0,
+      accumulator: Int = 0,
+      executedInstructions: Set[Int] = Set.empty,
+      programTerminated: Boolean = false
   ) {
     def copyAndIncrement(pointer: Int = this.pointer, accumulator: Int = this.accumulator): ProgramState = {
       this.copy(pointer = pointer, accumulator = accumulator, executedInstructions = this.executedInstructions + this.pointer)
@@ -66,7 +66,7 @@ object Day8 extends App {
       .map {
         case (Nop(amount), index)  => followInstructions(input.updated(index, Jump(amount)))
         case (Jump(amount), index) => followInstructions(input.updated(index, Nop(amount)))
-        case _ => ProgramState()
+        case _                     => ProgramState()
       }
       .collectFirst {
         case state @ ProgramState(_, _, _, programTerminated) if programTerminated => state
