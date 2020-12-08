@@ -25,10 +25,9 @@ object Day5 extends Day(5) {
 
     //Part Two
     val sortedIds = boardingPassIds.sorted
-    val (nextSeatId, _) = sortedIds.zipWithIndex.filter {
-      case (value, index) if index > 0 => sortedIds(index - 1) != value - 1
-      case _                           => false
-    }.head
-    println(s"Boarding pass id is ${nextSeatId - 1}")
+    val possResult = sortedIds.to(LazyList).zipWithIndex.collectFirst {
+      case (value, index) if index > 0 && sortedIds(index - 1) != value - 1 => value
+    }
+    println(s"Boarding pass id is ${possResult.map(_.toString).getOrElse("Could not find seat")}")
   }
 }
