@@ -2,7 +2,7 @@ package aoc2020
 
 import scala.annotation.tailrec
 
-object Day6 extends App {
+object Day6 extends Day(6) {
   @tailrec
   def processDeclarations(
       lines: List[String],
@@ -26,7 +26,7 @@ object Day6 extends App {
       .sum
   }
 
-  Util.processInput("day6") { lines =>
+  def solution(lines: List[String]): Unit = {
     println(s"Total number of answered questions: ${sumOfAnsweredQuestions(lines)}")
     println(s"Total number of all answered questions: ${sumOfAllAnsweredQuestions(lines)}")
   }

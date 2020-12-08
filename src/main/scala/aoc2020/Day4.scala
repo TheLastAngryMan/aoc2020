@@ -6,7 +6,7 @@ import scala.annotation.tailrec
 import scala.io.Source
 import scala.util.matching.Regex
 
-object Day4 {
+object Day4 extends Day(4) {
   sealed trait PassportField {
     def validate: Boolean
   }
@@ -18,12 +18,12 @@ object Day4 {
   case class IssueYear(issueYear: String) extends YearField(issueYear, 2010, 2020)
   case class ExpirationYear(expirationYear: String) extends YearField(expirationYear, 2020, 2030)
   case class Height(value: String) extends PassportField {
-    def heightRegex: Regex = "^([0-9]*)(cm|in)$".r
+    val heightRegex: Regex = "^([0-9]*)(cm|in)$".r
     def validate: Boolean = {
-      heightRegex.findAllIn(value).matchData.toList.headOption.map(matches => matches.group(1).toInt -> matches.group(2)).exists {
-        case (height, "cm") => height >= 150 && height <= 193
-        case (height, "in") => height >= 59 && height <= 76
-        case _              => false
+      value match {
+        case heightRegex(height, unitValue) if unitValue == "cm" => height.toInt >= 150 && height.toInt <= 193
+        case heightRegex(height, unitValue) if unitValue == "in" => height.toInt >= 59 && height.toInt <= 76
+        case _ => false
       }
     }
   }
@@ -92,10 +92,8 @@ object Day4 {
 
   def validatePassportBatch(batch: List[String], f: Passport => Boolean): Int = processPassportBatch(batch).count(f)
 
-  def main(args: Array[String]): Unit = {
-    Util.processInput("day4") { lines =>
-      println(s"Number of basic valid passports is ${validatePassportBatch(lines, _.validateFieldsPresent)}")
-      println(s"Number of checked valid passports is ${validatePassportBatch(lines, _.validateFields)}")
-    }
+  def solution(lines: List[String]): Unit = {
+    println(s"Number of basic valid passports is ${validatePassportBatch(lines, _.validateFieldsPresent)}")
+    println(s"Number of checked valid passports is ${validatePassportBatch(lines, _.validateFields)}")
   }
 }
