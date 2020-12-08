@@ -1,7 +1,6 @@
 package aoc2020
 
 import scala.annotation.tailrec
-import scala.io.Source
 
 object Day3 extends Day(3){
   case class Coord(x: Int, y: Int)

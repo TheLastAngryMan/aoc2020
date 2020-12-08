@@ -1,8 +1,9 @@
 package aoc2020
 
+import cats.syntax.option._
+
 import scala.annotation.tailrec
 import scala.util.matching.Regex
-import cats.syntax.option._
 
 object Day8 extends Day(8) {
   val instructionRegex: Regex = "^(nop|acc|jmp) ([+\\-][0-9]+)$".r

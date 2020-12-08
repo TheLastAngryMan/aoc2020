@@ -3,7 +3,6 @@ package aoc2020
 import cats.syntax.option._
 
 import scala.annotation.tailrec
-import scala.io.Source
 import scala.util.matching.Regex
 
 object Day4 extends Day(4) {
