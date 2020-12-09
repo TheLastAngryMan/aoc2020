@@ -1,6 +1,7 @@
 package aoc2020
 
 import scala.util.matching.Regex
+import cats.syntax.option._
 
 object Day2 extends Day(2) {
   val passwordRegex: Regex = "^([0-9]*)-([0-9]*) ([a-z]): (.*)$".r
@@ -20,7 +21,7 @@ object Day2 extends Day(2) {
   def parsePasswordLine(input: String): Option[PasswordLine] = {
     input match {
       case passwordRegex(lower, upper, character, password) =>
-        Some(PasswordLine(lower.toInt, upper.toInt, character.toCharArray.head, password))
+        PasswordLine(lower.toInt, upper.toInt, character.toCharArray.head, password).some
       case _ => None
     }
   }
