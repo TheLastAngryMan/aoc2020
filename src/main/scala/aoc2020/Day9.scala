@@ -33,9 +33,9 @@ object Day9 extends Day(9) {
     }
     lines.indices
       .to(LazyList)
-      .map(index => index -> calculateWeakness(lines.slice(index, lines.size)))
+      .map(index => calculateWeakness(lines.slice(index, lines.size)))
       .collectFirst {
-        case (_, Some(weaknessList)) => weaknessList
+        case Some(weaknessList) => weaknessList
       }
       .map(weakness => weakness.min + weakness.max)
   }
